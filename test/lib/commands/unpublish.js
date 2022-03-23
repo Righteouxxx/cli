@@ -115,7 +115,7 @@ t.test('no args --force missing package.json', async t => {
 
   await t.rejects(
     unpublish.exec([]),
-    /Usage: npm unpublish/,
+    { code: 'EUSAGE' },
     'should throw usage instructions on missing package.json'
   )
 })
@@ -157,7 +157,7 @@ t.test('too many args', async t => {
 
   await t.rejects(
     unpublish.exec(['a', 'b']),
-    /Usage: npm unpublish/,
+    { code: 'EUSAGE' },
     'should throw usage instructions if too many args'
   )
 })
